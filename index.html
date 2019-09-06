@@ -21,7 +21,7 @@
 
 	<div class="accordion">
 
-        <h2 id="firstSubHeader">Man-of-War</h2>
+		<h2 id="firstSubHeader">Man-of-War</h2>
 		<div><p>Prow clipper capstan grog poop deck. Hands man-of-war interloper measured fer yer chains no prey, no pay. Spanish Main dead men tell no tales hands spirits Pieces of Eight.</p></div>
 
 		<h2 id="secondSubHeader">Cutlass</h2>
@@ -37,17 +37,22 @@
 		const secondSubHeader = document.getElementById('secondSubHeader');
 		const thirdSubHeader = document.getElementById('thirdSubHeader');
 
-		// const classAttr = document.createAttribute('class');//value = 'hidden';
-
-		const hideChild = function() {
-			this.setAttribute('class', 'hidden');
-			console.log('this', this);
+		const toggleSibiling = function() {
+			const divElement = this.nextElementSibling;
+			if (divElement.classList.contains('hidden')) {
+				divElement.classList.remove('hidden');
+			}
+			else {
+				divElement.classList.add('hidden');
+			}
 		};
 
+		const headers = document.getElementsByTagName('h2');
 
-		firstSubHeader.addEventListener('click', hideChild);
+		for (let i = 0; i < headers.length; i++) {
+			headers[i].addEventListener('click', toggleSibiling);
+		}
 
-		console.log('thirdSubHeader', firstSubHeader);
 		// Project code...
 	</script>
 
